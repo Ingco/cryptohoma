@@ -1,0 +1,9 @@
+# Tests for project
+test/*
+
+# Migrations files
+migrations/*
+
+# Configs
+truffle.js
+
