@@ -5,12 +5,12 @@ import "zeppelin-solidity/contracts/token/ERC20/StandardToken.sol";
 import "zeppelin-solidity/contracts/token/ERC20/BurnableToken.sol";
 
 /**
- * Контракт CryptoHoma наследуется от контракта MintableToken из фреймворка OpenZeppeline
+ * Контракт CryptoHoma
  */
 contract CryptohomaToken is StandardToken, MintableToken, BurnableToken {
     
-    string public name = "CryptoHoma";
-    string public symbol = "HOMA";
+    string public name = "CryptoHoma3";
+    string public symbol = "HOMA3";
     uint public decimals = 18;
 
 }

@@ -7,8 +7,8 @@ import "./CryptohomaToken.sol";
 
 contract CryptohomaCrowdsale is MintedCrowdsale, Ownable, BasicToken {
     
-    // Начало Crowdsale - 15.04.2018 09:00:00
-    uint start = 1523782800; //1523145601;
+    // Начало Crowdsale
+    uint start = 1523782800;
 
     // Период сбора денег
     uint period = 31;
@@ -49,9 +49,7 @@ contract CryptohomaCrowdsale is MintedCrowdsale, Ownable, BasicToken {
     uint256 public rate = 0.000011 * 1 ether;
     uint256 public rate2 = 0.000015 * 1 ether;
     
-    function CryptohomaCrowdsale (
-        //address _wallet
-    ) public Crowdsale(rate, multisig, ERC20(token)) {
+    function CryptohomaCrowdsale () public Crowdsale(rate, multisig, ERC20(token)) {
  
         // Отправляем токены на pre-sale
         uint256 tokens = totalSupply.mul(presale_percent).div(100);
@@ -120,7 +118,12 @@ contract CryptohomaCrowdsale is MintedCrowdsale, Ownable, BasicToken {
             rate = rate2;
         }
         
-        return _weiAmount.div(rate);
+        return _weiAmount / rate * 1 ether;
+    }
+
+    modifier periodICO() {
+        require(now > start && now < start + period * 1 days);
+        _;
     }
 
   /**
@@ -128,11 +131,11 @@ contract CryptohomaCrowdsale is MintedCrowdsale, Ownable, BasicToken {
    * @param _beneficiary Address performing the token purchase
    * @param _weiAmount Value in wei involved in the purchase
    */
-    function _preValidatePurchase(address _beneficiary, uint256 _weiAmount) internal {
+    function _preValidatePurchase(address _beneficiary, uint256 _weiAmount) periodICO internal {
         require(_beneficiary != address(0));
         require(_weiAmount != 0);
 
-        require(now > start && now < start + period * 1 days);
+        
 
         // calculate token amount to be created
         uint256 tokens = _getTokenAmount(_weiAmount);

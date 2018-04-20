@@ -7,3 +7,4 @@ migrations/*
 # Configs
 truffle.js
 
+.gitignore
