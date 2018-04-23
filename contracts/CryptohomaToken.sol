@@ -1,7 +1,6 @@
 pragma solidity ^0.4.18;
 
 import "zeppelin-solidity/contracts/token/ERC20/MintableToken.sol";
-import "zeppelin-solidity/contracts/crowdsale/emission/MintedCrowdsale.sol";
 import "zeppelin-solidity/contracts/token/ERC20/StandardToken.sol";
 import "zeppelin-solidity/contracts/token/ERC20/BurnableToken.sol";
 
@@ -101,7 +100,7 @@ contract CryptohomaToken is StandardToken, MintableToken, BurnableToken {
     uint256 public rate = 0.000011 * 1 ether;
     uint256 public rate2 = 0.000015 * 1 ether;
 
-    function TestTokenH6() public {
+    function CryptohomaToken() public {
 
         // Считаем выпущенные токены
         totalMinted = totalMinted.add(presale_tokens);
