@@ -8,3 +8,10 @@ migrations/*
 truffle.js
 
 .gitignore
+.idea/*
+
+# Compile files
+build/*
+
+# Backups
+backup_contracts/*
